@@ -6,13 +6,48 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
+    <Button
+        android:id="@+id/LogOutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:backgroundTint="@color/red"
+        android:text="Log Out"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.023" />
+
+    <Button
+        android:id="@+id/CalendarButton"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="Choose your mood"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:cornerRadius="2dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.33" />
+
+    <Button
+        android:id="@+id/RaportButton"
+        android:layout_width="250dp"
+        android:layout_height="80dp"
+        android:layout_marginTop="222dp"
+        android:backgroundTint="@color/light_blue"
+        android:text="Show raport"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        app:cornerRadius="2dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="@+id/CalendarButton"
+        app:layout_constraintVertical_bias="0.207" />
 </androidx.constraintlayout.widget.ConstraintLayout>
