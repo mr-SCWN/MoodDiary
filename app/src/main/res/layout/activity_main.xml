@@ -50,4 +50,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/CalendarButton"
         app:layout_constraintVertical_bias="0.207" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="1509dp"
+        android:layout_height="1390dp"
+        android:alpha="0.88"
+        android:elevation="-10dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.676"
+        app:srcCompat="@drawable/mooddiarypng"
+        tools:ignore="MissingConstraints" />
 </androidx.constraintlayout.widget.ConstraintLayout>
