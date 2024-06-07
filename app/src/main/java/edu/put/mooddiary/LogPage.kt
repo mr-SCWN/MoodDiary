@@ -3,27 +3,40 @@ package edu.put.mooddiary
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.util.concurrent.Executor
 
 class LogPage : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
+    private lateinit var db: FirebaseFirestore
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_log_page)
 
-        // Log In Button
-        val logInButton: Button = findViewById(R.id.LogInButton)
-        logInButton.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
+        auth = FirebaseAuth.getInstance()
+        db = FirebaseFirestore.getInstance()
+
+        val loginButton: Button = findViewById(R.id.LogInButton)
+        loginButton.setOnClickListener {
+            val username = findViewById<EditText>(R.id.NicknameWrite).text.toString()
+            val password = findViewById<EditText>(R.id.PasswordWrite).text.toString()
+
+            if (username.isNotEmpty() && password.isNotEmpty()) {
+                loginUser(username, password)
+            } else {
+                Toast.makeText(this, "Please enter both username and password", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        // Sign Up Button
         val signUpButton: Button = findViewById(R.id.SignUpButton)
         signUpButton.setOnClickListener {
             val intent = Intent(this, SignUpActivity::class.java)
@@ -32,6 +45,35 @@ class LogPage : AppCompatActivity() {
 
         // Set up fingerprint authentication
         setupFingerprintAuthentication()
+    }
+
+    private fun loginUser(username: String, password: String) {
+        db.collection("users").whereEqualTo("username", username).get()
+            .addOnSuccessListener { documents ->
+                if (documents.isEmpty) {
+                    Toast.makeText(this, "User not found", Toast.LENGTH_SHORT).show()
+                } else {
+                    for (document in documents) {
+                        val email = document.getString("email")
+                        if (email != null) {
+                            // Firebase Authentication handles password checking
+                            auth.signInWithEmailAndPassword(email, password)
+                                .addOnCompleteListener(this) { task ->
+                                    if (task.isSuccessful) {
+                                        val intent = Intent(this, MainActivity::class.java)
+                                        startActivity(intent)
+                                        finish()
+                                    } else {
+                                        Toast.makeText(this, "Authentication failed", Toast.LENGTH_SHORT).show()
+                                    }
+                                }
+                        }
+                    }
+                }
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
     private fun setupFingerprintAuthentication() {

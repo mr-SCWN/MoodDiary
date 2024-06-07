@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "530979753004",
+    "project_id": "mooddiary-fccfd",
+    "storage_bucket": "mooddiary-fccfd.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:530979753004:android:f9c7a83a2bfa88d1195589",
+        "android_client_info": {
+          "package_name": "edu.put.mooddiary"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACyd6MWawyX083GcT5ji9mFq-e1asILFs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
