@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">MoodDiary</string>
-    <string name="enter_name">Write username</string>
-    <string name="enter_password">Write password</string>
-
+    <string name="enter_name">Username</string>
+    <string name="enter_password">Password</string>
+    <string name="fingerprint_icon">Fingerprint icon</string>
+    <string name="back">Back</string>
 </resources>

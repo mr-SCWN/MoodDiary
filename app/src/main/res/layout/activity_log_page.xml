@@ -60,40 +60,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/LogInButton" />
 
-    <TextView
-        android:id="@+id/NicknameText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Username"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/NicknameWrite"
-        app:layout_constraintEnd_toStartOf="@+id/NicknameWrite"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/NicknameWrite" />
-
-    <TextView
-        android:id="@+id/PasswordText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Password"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/PasswordWrite"
-        app:layout_constraintEnd_toStartOf="@+id/PasswordWrite"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/PasswordWrite" />
-
     <EditText
         android:id="@+id/NicknameWrite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:ems="10"
+        android:hint="@string/enter_name"
         android:inputType="text"
         android:minHeight="48dp"
-        android:hint="@string/enter_name"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/LogInButton"
@@ -103,17 +77,32 @@
 
     <EditText
         android:id="@+id/PasswordWrite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="350dp"
+        android:layout_height="50dp"
         android:ems="10"
+        android:hint="@string/enter_password"
         android:inputType="textPassword"
+        android:minHeight="48dp"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:minHeight="48dp"
-        android:hint="@string/enter_password"
         app:layout_constraintBottom_toTopOf="@+id/LogInButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/NicknameWrite" />
+
+    <ImageView
+        android:id="@+id/fingerprintIcon"
+        android:layout_width="86dp"
+        android:layout_height="112dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/fingerprint_icon"
+        android:src="@drawable/ic_fingerprint"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/LogInButton"
+        app:layout_constraintVertical_bias="0.117" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
