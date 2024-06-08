@@ -8,101 +8,97 @@
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="1509dp"
-        android:layout_height="1390dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:alpha="0.88"
-        android:elevation="-10dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676"
-        app:srcCompat="@drawable/mooddiarypng"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/mooddiarypng" />
 
-    <Button
-        android:id="@+id/LogInButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:text="Log In"
-        android:backgroundTint="@color/green"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.437" />
-
-    <Button
-        android:id="@+id/SignUpButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:layout_marginBottom="64dp"
-        android:text="Sign Up"
-        android:backgroundTint="@color/yellow"
-        android:textColor="@android:color/black"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/NoAccText" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <TextView
-        android:id="@+id/NoAccText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="If you don't have an account, you can register"
-        android:textColor="@android:color/black"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/LogInButton" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-    <EditText
-        android:id="@+id/NicknameWrite"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="@string/enter_name"
-        android:inputType="text"
-        android:minHeight="48dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/LogInButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+            <EditText
+                android:id="@+id/NicknameWrite"
+                android:minHeight="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/enter_name"
+                android:inputType="text"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_edittext"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
 
-    <EditText
-        android:id="@+id/PasswordWrite"
-        android:layout_width="350dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="@string/enter_password"
-        android:inputType="textPassword"
-        android:minHeight="48dp"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/LogInButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/NicknameWrite" />
+            <EditText
+                android:id="@+id/PasswordWrite"
+                android:minHeight="48dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:hint="@string/enter_password"
+                android:inputType="textPassword"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:background="@drawable/rounded_edittext"
+                android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray" />
 
-    <ImageView
-        android:id="@+id/fingerprintIcon"
-        android:layout_width="86dp"
-        android:layout_height="112dp"
-        android:layout_marginTop="16dp"
-        android:contentDescription="@string/fingerprint_icon"
-        android:src="@drawable/ic_fingerprint"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/LogInButton"
-        app:layout_constraintVertical_bias="0.117" />
+            <Button
+                android:id="@+id/LogInButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Log In"
+                android:backgroundTint="@color/green"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/NoAccText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/CanRegister"
+                android:textColor="@android:color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/SignUpButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Sign Up"
+                android:backgroundTint="@color/yellow"
+                android:textColor="@android:color/black" />
+
+            <ImageView
+                android:id="@+id/fingerprintIcon"
+                android:layout_width="86dp"
+                android:layout_height="112dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:contentDescription="@string/fingerprint_icon"
+                android:src="@drawable/ic_fingerprint" />
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

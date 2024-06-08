@@ -1,7 +1,9 @@
 package edu.put.mooddiary
 
 import android.content.Intent
+import android.content.res.Configuration
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
@@ -46,6 +48,17 @@ class SignUpActivity : AppCompatActivity() {
         backButton.setOnClickListener {
             val intent = Intent(this, LogPage::class.java)
             startActivity(intent)
+        }
+    }
+
+
+    override fun onConfigurationChanged(newConfig: Configuration) {
+        super.onConfigurationChanged(newConfig)
+        // Show a Toast message when the screen orientation changes
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "Orientation changed to Landscape", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "Orientation changed to Portrait", Toast.LENGTH_SHORT).show()
         }
     }
 

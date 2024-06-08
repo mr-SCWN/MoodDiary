@@ -6,62 +6,76 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/LogOutButton"
-        android:layout_width="100dp"
-        android:layout_height="50dp"
-        android:backgroundTint="@color/red"
-        android:text="Log Out"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023" />
-
-    <Button
-        android:id="@+id/CalendarButton"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:backgroundTint="@color/light_blue"
-        android:text="Choose your mood"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:cornerRadius="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.33" />
-
-    <Button
-        android:id="@+id/RaportButton"
-        android:layout_width="250dp"
-        android:layout_height="80dp"
-        android:layout_marginTop="222dp"
-        android:backgroundTint="@color/light_blue"
-        android:text="Show raport"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        app:cornerRadius="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/CalendarButton"
-        app:layout_constraintVertical_bias="0.207" />
-
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="1509dp"
-        android:layout_height="1390dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:alpha="0.88"
-        android:elevation="-10dp"
+        android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.676"
-        app:srcCompat="@drawable/mooddiarypng"
-        tools:ignore="MissingConstraints" />
+        app:srcCompat="@drawable/mooddiarypng" />
+
+    <ScrollView
+        android:id="@+id/scrollViewMain"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:id="@+id/LogOutButton"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:backgroundTint="@color/red"
+                    android:text="Log Out"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_margin="16dp" />
+
+            </RelativeLayout>
+
+            <Button
+                android:id="@+id/CalendarButton"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:backgroundTint="@color/light_blue"
+                android:text="Choose your mood"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:cornerRadius="2dp"
+                android:layout_marginTop="50dp"
+                android:layout_gravity="center_horizontal" />
+
+            <Button
+                android:id="@+id/RaportButton"
+                android:layout_width="250dp"
+                android:layout_height="80dp"
+                android:layout_marginTop="50dp"
+                android:backgroundTint="@color/light_blue"
+                android:text="Show raport"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
+                app:cornerRadius="2dp"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- Add more content here if needed -->
+
+        </LinearLayout>
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

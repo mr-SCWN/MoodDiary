@@ -1,7 +1,8 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">MoodDiary</string>
     <string name="enter_name">Username</string>
     <string name="enter_password">Password</string>
     <string name="fingerprint_icon">Fingerprint icon</string>
     <string name="back">Back</string>
+    <string name="CanRegister">If you dont have an account, you can register</string>
 </resources>
