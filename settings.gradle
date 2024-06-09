@@ -1,16 +1,22 @@
 pluginManagement {
     repositories {
+        gradlePluginPortal()
         google()
         mavenCentral()
-        gradlePluginPortal()
+        jcenter() // Optional, for legacy dependencies
     }
 }
+
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
     repositories {
         google()
         mavenCentral()
+        jcenter() // Optional, for legacy dependencies
+        maven { url "https://jitpack.io" } // Add JitPack for GitHub repositories if needed
+
     }
 }
+
 rootProject.name = "MoodDiary"
 include ':app'

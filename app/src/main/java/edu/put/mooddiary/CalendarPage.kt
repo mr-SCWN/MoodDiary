@@ -87,9 +87,14 @@ class CalendarPage : AppCompatActivity() {
 
         val userId = auth.currentUser?.uid ?: return
 
+        val calendar = Calendar.getInstance()
+        calendar.set(year, month, day)
+        val date = calendar.time
+
         val data = hashMapOf(
             "mark" to mark,
-            "description" to description
+            "description" to description,
+            "date" to date
         )
 
         db.collection("users").document(userId).collection("calendar")
@@ -102,6 +107,8 @@ class CalendarPage : AppCompatActivity() {
                 Toast.makeText(this, "Error saving data: ${e.message}", Toast.LENGTH_SHORT).show()
             }
     }
+
+
 
     private fun loadData(year: Int, month: Int, day: Int) {
         val userId = auth.currentUser?.uid ?: return
