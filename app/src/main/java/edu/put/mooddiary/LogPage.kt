@@ -1,7 +1,13 @@
 package edu.put.mooddiary
 
+import android.Manifest
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -10,6 +16,9 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricManager
 import androidx.biometric.BiometricPrompt
+import androidx.core.app.ActivityCompat
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -46,6 +55,13 @@ class LogPage : AppCompatActivity() {
 
         // Set up fingerprint authentication
         setupFingerprintAuthentication()
+
+        // Request notification permission on Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.POST_NOTIFICATIONS), 1)
+            }
+        }
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -56,7 +72,6 @@ class LogPage : AppCompatActivity() {
             Toast.makeText(this, "Orientation changed to Portrait", Toast.LENGTH_SHORT).show()
         }
     }
-
 
     private fun loginUser(username: String, password: String) {
         db.collection("users").whereEqualTo("username", username).get()
@@ -71,6 +86,7 @@ class LogPage : AppCompatActivity() {
                             auth.signInWithEmailAndPassword(email, password)
                                 .addOnCompleteListener(this) { task ->
                                     if (task.isSuccessful) {
+                                        showNotification(username)
                                         val intent = Intent(this, MainActivity::class.java)
                                         startActivity(intent)
                                         finish()
@@ -85,6 +101,36 @@ class LogPage : AppCompatActivity() {
             .addOnFailureListener { e ->
                 Toast.makeText(this, "Error: ${e.message}", Toast.LENGTH_SHORT).show()
             }
+    }
+
+    private fun showNotification(username: String) {
+        val notificationId = 1
+        val channelId = "login_channel"
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val name = "Login Notification"
+            val descriptionText = "Notification for successful login"
+            val importance = NotificationManager.IMPORTANCE_DEFAULT
+            val channel = NotificationChannel(channelId, name, importance).apply {
+                description = descriptionText
+            }
+
+            val notificationManager: NotificationManager =
+                getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.createNotificationChannel(channel)
+        }
+
+        val builder = NotificationCompat.Builder(this, channelId)
+            .setSmallIcon(R.drawable.notification_png)  // Use your custom icon here
+            .setContentTitle("Hello, $username!")
+            .setContentText("Thank you for using our application")
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(this)) {
+            if (ActivityCompat.checkSelfPermission(this@LogPage, Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED) {
+                notify(notificationId, builder.build())
+            }
+        }
     }
 
     private fun setupFingerprintAuthentication() {

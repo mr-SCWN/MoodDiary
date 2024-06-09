@@ -35,10 +35,10 @@ class MainActivity : AppCompatActivity() {
 
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
-            if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                Toast.makeText(this, "Orientation changed to Landscape", Toast.LENGTH_SHORT).show()
-            } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
-                Toast.makeText(this, "Orientation changed to Portrait", Toast.LENGTH_SHORT).show()
-            }
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            Toast.makeText(this, "Orientation changed to Landscape", Toast.LENGTH_SHORT).show()
+        } else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+            Toast.makeText(this, "Orientation changed to Portrait", Toast.LENGTH_SHORT).show()
+        }
     }
 }
